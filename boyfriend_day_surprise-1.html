@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Honey 💗</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Pacifico&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;background:#fffafa;color:#f0a0bb;
+  font-family:"Baloo 2",cursive;overflow:hidden;
+}
+.background{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+.cat{position:absolute;font-size:42px;opacity:.20;filter:saturate(.7)}
+.cat:nth-child(1){top:8%;left:7%;transform:rotate(-12deg)}
+.cat:nth-child(2){top:17%;right:8%;transform:rotate(10deg)}
+.cat:nth-child(3){bottom:12%;left:9%;transform:rotate(8deg)}
+.cat:nth-child(4){bottom:18%;right:10%;transform:rotate(-9deg)}
+.cat:nth-child(5){top:48%;left:3%;font-size:30px}
+.cat:nth-child(6){top:55%;right:4%;font-size:32px}
+.heart{position:absolute;color:#f6b6ca;opacity:.3;font-size:22px}
+.heart:nth-child(7){top:30%;left:18%}
+.heart:nth-child(8){top:72%;right:19%}
+.heart:nth-child(9){bottom:7%;left:45%}
+
+.page{position:relative;z-index:2;width:100%;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:25px}
+.card{
+  width:min(92%,650px);min-height:440px;background:rgba(255,255,255,.97);
+  border:3px solid #f7c0d2;border-radius:35px;
+  box-shadow:0 15px 45px rgba(225,116,151,.16);
+  padding:42px 28px;display:flex;justify-content:center;align-items:center;
+  text-align:center;position:relative;
+}
+.content{animation:appear .45s ease}
+@keyframes appear{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:none}}
+
+.kitty{
+  width:105px;height:82px;background:white;border:3px solid #f1a7bf;
+  border-radius:48% 48% 42% 42%;position:relative;margin:0 auto 25px;
+  box-shadow:0 5px 12px rgba(241,167,191,.15)
+}
+.kitty:before,.kitty:after{content:"";position:absolute;top:-17px;width:32px;height:32px;background:white;border-top:3px solid #f1a7bf}
+.kitty:before{left:7px;transform:rotate(45deg);border-left:3px solid #f1a7bf}
+.kitty:after{right:7px;transform:rotate(45deg);border-right:3px solid #f1a7bf}
+.eye{position:absolute;width:7px;height:10px;background:#5f4050;border-radius:50%;top:34px}
+.eye.left{left:30px}.eye.right{right:30px}
+.nose{position:absolute;width:7px;height:5px;background:#e891ad;border-radius:50%;top:48px;left:49px}
+.whisker{position:absolute;width:27px;height:1px;background:#e6a4b9;top:50px}
+.whisker.left{left:3px;transform:rotate(10deg)}.whisker.right{right:3px;transform:rotate(-10deg)}
+.bow{position:absolute;width:33px;height:25px;background:#ed729d;border-radius:50%;top:-8px;right:-8px;transform:rotate(12deg)}
+.bow:before{content:"";position:absolute;width:33px;height:25px;background:#ed729d;border-radius:50%;right:19px;transform:rotate(-25deg)}
+.bow:after{content:"";position:absolute;width:10px;height:10px;background:#fff;border-radius:50%;top:8px;left:12px}
+
+h1{font-family:"Pacifico",cursive;color:#f19ab8;font-size:clamp(34px,7vw,58px);line-height:1.2;margin-bottom:18px}
+h2{color:#ef9bb7;font-size:clamp(28px,6vw,45px);line-height:1.25;margin-bottom:20px}
+p{color:#eba1bb;font-size:clamp(20px,4vw,27px);line-height:1.5;max-width:550px;margin-left:auto;margin-right:auto}
+.small{font-size:18px;margin-top:15px}
+.signature{font-family:"Pacifico",cursive;font-size:26px;color:#df7d9f;margin-top:25px}
+.sparkles{font-size:23px;letter-spacing:5px;margin-bottom:12px}
+.buttons{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;margin-top:30px}
+button{
+  border:2px solid #d95f8c;background:#d95f8c;color:#fff;
+  font-family:"Baloo 2",cursive;font-size:20px;font-weight:600;
+  padding:11px 28px;border-radius:999px;cursor:pointer;
+  box-shadow:0 6px 15px rgba(217,95,140,.22);transition:.2s ease
+}
+button:hover{transform:translateY(-3px) scale(1.03);background:#fff;color:#d95f8c}
+button:active{transform:scale(.96)}
+.no-message{font-size:18px!important;margin-top:18px;color:#d95f8c!important}
+@media(max-width:500px){
+  .card{min-height:480px;padding:35px 20px}
+  .kitty{transform:scale(.85);margin-bottom:15px}
+  button{font-size:18px;padding:10px 24px}
+  .cat{font-size:30px}
+}
+</style>
+</head>
+<body>
+<div class="background">
+  <div class="cat">🐱</div><div class="cat">🐱</div><div class="cat">🐱</div>
+  <div class="cat">🐱</div><div class="cat">🐾</div><div class="cat">🐾</div>
+  <div class="heart">♡</div><div class="heart">♡</div><div class="heart">♡</div>
+</div>
+
+<main class="page">
+<div class="card">
+<div id="content" class="content"></div>
+</div>
+</main>
+
+<script>
+const content=document.getElementById("content");
+
+function kitty(){
+return `<div class="kitty"><div class="bow"></div>
+<div class="eye left"></div><div class="eye right"></div><div class="nose"></div>
+<div class="whisker left"></div><div class="whisker right"></div></div>`;
+}
+
+function render(html){
+content.classList.remove("content"); void content.offsetWidth; content.classList.add("content");
+content.innerHTML=html;
+}
+
+function page1(){
+render(`${kitty()}
+<div class="sparkles">✦ ♡ ✦</div>
+<h1>Hiiiii!!!</h1>
+<p>This is your favourite girl!!! 💗</p>
+<p>Do youu want to exploreee?!!!</p>
+<div class="buttons">
+<button onclick="page2()">Yess ✨✨</button>
+<button onclick="page2()">Yess ✨✨</button>
+</div>
+<p class="small">You don't get a choice, you've too hehehe 🤭</p>`);
+}
+
+function page2(){
+render(`${kitty()}
+<div class="sparkles">♡ ✨ ♡</div>
+<h2>You're here, honeyyy!!! 💗</h2>
+<p>Now give me kissesss!!! 😚</p>
+<p>Do you want to???</p>
+<div class="buttons">
+<button onclick="page3()">Yess 💗</button>
+<button onclick="noKisses()">Noo</button>
+</div>`);
+}
+
+function noKisses(){
+render(`${kitty()}
+<div class="sparkles">😭 💗 😭</div>
+<h2>Nooope!!!</h2>
+<p>You don't get to sayyy nooo 😭💗</p>
+<p>You've to give Mee kissesss!!!</p>
+<p class="small">Go back and choose properly, honeyyy 🤭</p>
+<div class="buttons"><button onclick="page2()">Go backkk 💗</button></div>`);
+}
+
+function page3(){
+render(`${kitty()}
+<div class="sparkles">💗 💗 💗</div>
+<h2>Heheheheee!!! 😭💗</h2>
+<p>I knew you'd say yesss!!!</p>
+<p>Now give me kissessss 😚😚😚</p>
+<div class="buttons"><button onclick="page4()">Okayyy 💗</button></div>`);
+}
+
+function page4(){
+render(`${kitty()}
+<div class="sparkles">✦ ♡ ✦</div>
+<h1>Happyyyy</h1>
+<h2>Boyfriend Dayyyy!!! 💗</h2>
+<p>Honeyyy, I Loveee youuuuuu soo muchh babeyyyy. 🥹💗</p>
+<div class="buttons"><button onclick="page5()">Continueee ✨</button></div>`);
+}
+
+function page5(){
+render(`${kitty()}
+<div class="sparkles">♡ ✨ ♡</div>
+<h2>Thankkkkkk youuuuu</h2>
+<p>Thankkkkkk youuuuu forr beinggg in my lifeee. 💗</p>
+<div class="buttons"><button onclick="page6()">One moreee ✨</button></div>`);
+}
+
+function page6(){
+render(`${kitty()}
+<div class="sparkles">🐱 ♡ 🐱</div>
+<p>I'm manifesting little us in our home in futureee...</p>
+<p>and soo manyyy catsssss!!! 🐱🐱🐱💗</p>
+<div class="buttons"><button onclick="page7()">Awww 🥹</button></div>`);
+}
+
+function page7(){
+render(`${kitty()}
+<div class="sparkles">♡ ✨ ♡ ✨ ♡</div>
+<h1>Foreverrr yours 💗</h1>
+<p>Your future Mrs. Sharma jiii. 🥹💗</p>
+<div class="signature">— Your favourite girl ♡</div>`);
+}
+
+page1();
+</script>
+</body>
+</html>
